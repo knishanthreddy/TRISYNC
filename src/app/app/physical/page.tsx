@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { DimensionPill } from "@/components/ui/dimension-pill";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ import {
   Layers,
   Sparkles,
   Flame,
+  Watch,
 } from "lucide-react";
 
 interface IndianFoodItem {
@@ -137,26 +139,36 @@ export default function PhysicalWellbeingPage() {
           </p>
         </div>
 
-        {/* Navigation Tabs */}
-        <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-[#FAF8F4] border border-[#183C32]/10 text-xs">
-          {[
-            { id: "twin", label: "Digital Twin" },
-            { id: "workouts", label: "Workouts" },
-            { id: "diet", label: "Indian Diet" },
-            { id: "body", label: "Transformation" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
-              className={`px-3 py-1.5 rounded-xl font-medium transition-all ${
-                activeTab === tab.id
-                  ? "bg-[#183C32] text-[#F5F1E8] shadow-subtle"
-                  : "text-[#3E4542] hover:text-[#183C32]"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Navigation Tabs & Devices Link */}
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-[#FAF8F4] border border-[#183C32]/10 text-xs">
+            {[
+              { id: "twin", label: "Digital Twin" },
+              { id: "workouts", label: "Workouts" },
+              { id: "diet", label: "Indian Diet" },
+              { id: "body", label: "Transformation" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`px-3 py-1.5 rounded-xl font-medium transition-all ${
+                  activeTab === tab.id
+                    ? "bg-[#183C32] text-[#F5F1E8] shadow-subtle"
+                    : "text-[#3E4542] hover:text-[#183C32]"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <Link
+            href="/app/devices"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-white border border-[#183C32]/15 text-xs font-medium text-[#183C32] hover:bg-[#FAF8F4] transition-all shadow-subtle"
+          >
+            <Watch className="w-3.5 h-3.5 text-[#46C5B0]" />
+            <span>Wearables & Sync</span>
+          </Link>
         </div>
       </div>
 

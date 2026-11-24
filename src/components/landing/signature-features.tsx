@@ -146,7 +146,7 @@ export const SignatureFeatures: React.FC = () => {
                   {feat.highlightMetric}
                 </span>
                 <Link
-                  href="/auth/signup"
+                  href="/app/overview"
                   className="inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
                 >
                   <span>Experience</span>

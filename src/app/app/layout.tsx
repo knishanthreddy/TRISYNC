@@ -19,10 +19,12 @@ import {
   Menu,
   X,
   Bot,
+  Watch,
 } from "lucide-react";
 
 const NAV_ITEMS = [
   { href: "/app/overview", label: "Overview", icon: LayoutGrid },
+  { href: "/app/devices", label: "Wearables & Sync", icon: Watch },
   { href: "/app/agent", label: "Wellness Agent", icon: Bot },
   { href: "/app/physical", label: "Physical Wellbeing", icon: Activity },
   { href: "/app/mental", label: "Mental Wellbeing", icon: Brain },
@@ -36,47 +38,8 @@ const NAV_ITEMS = [
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, isAuthenticated, isLoading, signOut, signIn } = useAuth();
+  const { user, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // If unauthenticated, allow instant 1-click session demo
-  if (!isLoading && !isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-[#F5F1E8] flex items-center justify-center p-6">
-        <div className="max-w-md w-full rounded-3xl bg-[#FAF8F4] border border-[#183C32]/15 p-8 text-center space-y-6 shadow-soft">
-          <div className="w-12 h-12 rounded-xl bg-[#183C32] text-[#F5F1E8] flex items-center justify-center mx-auto text-sm font-semibold">
-            TRI
-          </div>
-          <div className="space-y-2">
-            <h2 className="text-2xl font-light text-[#183C32]">Sign In Required</h2>
-            <p className="text-xs text-[#3E4542] leading-relaxed">
-              You are accessing the authenticated TRISYNC application space. Please sign in or
-              initialize an instant evaluation session.
-            </p>
-          </div>
-          <div className="space-y-3 pt-2">
-            <Button
-              variant="primary"
-              size="lg"
-              className="w-full"
-              onClick={async () => {
-                await signIn("alex@trisync.io");
-                router.refresh();
-              }}
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              1-Click Instant Demo Access
-            </Button>
-            <Link href="/auth/signin" className="block">
-              <Button variant="outline" size="md" className="w-full">
-                Go to Sign In
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-[#F5F1E8] flex flex-col md:flex-row text-[#222624]">

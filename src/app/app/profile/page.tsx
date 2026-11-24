@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/auth-context";
 import { DimensionPill } from "@/components/ui/dimension-pill";
@@ -20,6 +21,8 @@ import {
   AlertTriangle,
   Plus,
   X,
+  Watch,
+  ArrowRight,
 } from "lucide-react";
 
 const ALL_GOALS = [
@@ -133,6 +136,14 @@ export default function ProfilePage() {
               <CheckCircle2 className="w-4 h-4" /> Preferences Saved
             </span>
           )}
+          <Link
+            href="/app/devices"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#183C32] text-[#F5F1E8] text-xs font-medium hover:bg-[#112C25] transition-all shadow-subtle"
+          >
+            <Watch className="w-3.5 h-3.5 text-[#46C5B0]" />
+            <span>Connected Devices ({user?.permissions?.healthSensorsConsented ? "4 Active" : "Manage"})</span>
+            <ArrowRight className="w-3 h-3" />
+          </Link>
         </div>
       </div>
 

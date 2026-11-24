@@ -56,7 +56,7 @@ export default function LandingPage() {
 
                 {/* Primary & Secondary CTAs */}
                 <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <Link href="/auth/signup">
+                  <Link href="/app/overview">
                     <Button
                       variant="primary"
                       size="lg"
@@ -182,8 +182,8 @@ export default function LandingPage() {
 
                   <div className="pt-4 border-t border-[#183C32]/15 flex items-center justify-between text-xs font-medium text-[#183C32]">
                     <span className="font-mono">#183C32 &middot; #A9B9A4</span>
-                    <Link href="/auth/signup" className="hover:underline flex items-center gap-1">
-                      <span>Explore</span>
+                    <Link href="/app/physical" className="hover:underline flex items-center gap-1">
+                      <span>Explore Physical</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
@@ -229,8 +229,8 @@ export default function LandingPage() {
 
                   <div className="pt-4 border-t border-[#B9A5DF]/40 flex items-center justify-between text-xs font-medium text-[#603E99]">
                     <span className="font-mono">#B9A5DF &middot; #7B59BA</span>
-                    <Link href="/auth/signup" className="hover:underline flex items-center gap-1">
-                      <span>Explore</span>
+                    <Link href="/app/mental" className="hover:underline flex items-center gap-1">
+                      <span>Explore Mental</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
@@ -276,8 +276,8 @@ export default function LandingPage() {
 
                   <div className="pt-4 border-t border-[#46C5B0]/35 flex items-center justify-between text-xs font-medium text-[#0F685B]">
                     <span className="font-mono">#46C5B0 &middot; #ED805A</span>
-                    <Link href="/auth/signup" className="hover:underline flex items-center gap-1">
-                      <span>Explore</span>
+                    <Link href="/app/digital" className="hover:underline flex items-center gap-1">
+                      <span>Explore Digital</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
@@ -362,21 +362,21 @@ export default function LandingPage() {
                 </p>
 
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Link href="/auth/signup">
+                  <Link href="/app/overview">
                     <Button
                       variant="primary"
                       size="lg"
                       rightIcon={<ArrowRight className="w-4 h-4" />}
                       className="w-full sm:w-auto"
                     >
-                      Get Started
+                      Launch TRISYNC App
                     </Button>
                   </Link>
-                  <Link href="/auth/signin">
+                  <a href="#dimensions">
                     <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                      Sign In
+                      Explore Dimensions
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

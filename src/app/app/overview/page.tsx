@@ -29,6 +29,7 @@ import {
   Check,
   ShieldCheck,
   Plus,
+  Watch,
 } from "lucide-react";
 
 export default function OverviewPage() {
@@ -98,28 +99,50 @@ export default function OverviewPage() {
 
   return (
     <div className="space-y-10 sm:space-y-12 max-w-5xl mx-auto pb-12">
-      {/* 1. PERSONAL GREETING */}
-      <section className="space-y-2">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#3E4542]">
-          <Calendar className="w-3.5 h-3.5 text-[#183C32]" />
-          <span>
-            {new Date().toLocaleDateString(undefined, {
-              weekday: "long",
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </span>
-          <span className="text-[#3E4542]/40">&middot;</span>
-          <span className="text-[#1A8A7A] font-medium">Equilibrium Cadence</span>
+      {/* 1. PERSONAL GREETING & WEARABLES STATUS */}
+      <section className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#3E4542]">
+            <Calendar className="w-3.5 h-3.5 text-[#183C32]" />
+            <span>
+              {new Date().toLocaleDateString(undefined, {
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+            <span className="text-[#3E4542]/40">&middot;</span>
+            <span className="text-[#1A8A7A] font-medium">Equilibrium Cadence</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-[#183C32]">
+            Good morning, {user?.name || "Alex"}.
+          </h1>
+          <p className="text-base sm:text-lg text-[#3E4542] italic font-serif">
+            &ldquo;Let&apos;s bring your day into balance.&rdquo;
+          </p>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-light tracking-tight text-[#183C32]">
-          Good morning, {user?.name || "Alex"}.
-        </h1>
-        <p className="text-base sm:text-lg text-[#3E4542] italic font-serif">
-          &ldquo;Let&apos;s bring your day into balance.&rdquo;
-        </p>
+        {/* Wearables Quick Sync Pill */}
+        <Link
+          href="/app/devices"
+          className="p-3 rounded-2xl bg-[#FAF8F4] border border-[#183C32]/12 hover:border-[#183C32]/30 transition-all flex items-center gap-3 shadow-subtle group"
+        >
+          <div className="w-9 h-9 rounded-xl bg-[#183C32] text-[#46C5B0] flex items-center justify-center shrink-0">
+            <Watch className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#183C32]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#46C5B0] animate-pulse" />
+              <span>4 Sensors Connected</span>
+            </div>
+            <p className="text-[11px] text-[#3E4542] group-hover:text-[#183C32] transition-colors">
+              Apple Watch &middot; Pixel &middot; Whoop &middot; Withings
+            </p>
+          </div>
+          <ArrowRight className="w-4 h-4 text-[#3E4542] group-hover:text-[#183C32] group-hover:translate-x-0.5 transition-all ml-1" />
+        </Link>
       </section>
 
       {/* 2. HOLISTIC WELLNESS OVERVIEW WITH TRANSPARENT SCORING */}

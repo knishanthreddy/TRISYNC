@@ -59,24 +59,21 @@ const DEFAULT_DEMO_USER: UserProfile = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // Always authenticated by default with the complete demo profile so TRISYNC is directly accessible without sign-in walls
+  const [user, setUser] = useState<UserProfile | null>(DEFAULT_DEMO_USER);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Initialize from LocalStorage or provide clean demo state
+  // Initialize from LocalStorage or preserve default active user
   useEffect(() => {
     try {
       const stored = localStorage.getItem("trisync_session");
       if (stored) {
         setUser(JSON.parse(stored));
       } else {
-        // We leave user unauthenticated initially so landing page shows Sign In / Get Started,
-        // but demo account can be logged into instantly with 1-click
-        setUser(null);
+        localStorage.setItem("trisync_session", JSON.stringify(DEFAULT_DEMO_USER));
       }
     } catch (e) {
       console.warn("Storage access unavailable:", e);
-    } finally {
-      setIsLoading(false);
     }
   }, []);
 
@@ -145,7 +142,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signOut = () => {
-    saveUser(null);
+    saveUser(DEFAULT_DEMO_USER);
   };
 
   const completeOnboarding = (data: Partial<UserProfile>) => {

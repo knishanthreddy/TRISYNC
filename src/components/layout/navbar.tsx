@@ -52,28 +52,13 @@ export const Navbar: React.FC = () => {
             </a>
           </nav>
 
-          {/* Action CTAs: Sign In & Get Started */}
+          {/* Action CTAs: Direct Application Launch */}
           <div className="hidden sm:flex items-center gap-4">
-            {isAuthenticated ? (
-              <Link href="/app/overview">
-                <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
-                  Open App ({user?.name || "Dashboard"})
-                </Button>
-              </Link>
-            ) : (
-              <>
-                <Link href="/auth/signin">
-                  <Button variant="ghost" size="sm">
-                    Sign In
-                  </Button>
-                </Link>
-                <Link href="/auth/signup">
-                  <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
-                    Get Started
-                  </Button>
-                </Link>
-              </>
-            )}
+            <Link href="/app/overview">
+              <Button variant="primary" size="sm" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
+                Launch TRISYNC
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -129,26 +114,11 @@ export const Navbar: React.FC = () => {
               </a>
             </div>
             <div className="pt-2 flex flex-col gap-2">
-              {isAuthenticated ? (
-                <Link href="/app/overview" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="primary" size="md" className="w-full">
-                    Launch Application
-                  </Button>
-                </Link>
-              ) : (
-                <>
-                  <Link href="/auth/signin" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="outline" size="md" className="w-full">
-                      Sign In
-                    </Button>
-                  </Link>
-                  <Link href="/auth/signup" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="primary" size="md" className="w-full">
-                      Get Started
-                    </Button>
-                  </Link>
-                </>
-              )}
+              <Link href="/app/overview" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="primary" size="md" className="w-full" rightIcon={<ArrowRight className="w-4 h-4" />}>
+                  Launch TRISYNC
+                </Button>
+              </Link>
             </div>
           </div>
         )}

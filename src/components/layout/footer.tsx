@@ -70,13 +70,13 @@ export const Footer: React.FC = () => {
             </h5>
             <ul className="space-y-2 text-sm text-[#F5F1E8]/75">
               <li>
-                <Link href="/auth/signin" className="hover:text-white transition-colors">
-                  Sign In
+                <Link href="/app/overview" className="hover:text-white transition-colors">
+                  Overview Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/auth/signup" className="hover:text-white transition-colors">
-                  Create Account
+                <Link href="/app/devices" className="hover:text-white transition-colors">
+                  Connected Wearables & Sync
                 </Link>
               </li>
               <li>
