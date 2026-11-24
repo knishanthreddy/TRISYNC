@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Modal } from "@/components/ui/modal";
-import { FitnessDigitalTwin, MuscleRegion } from "@/components/canvas/fitness-digital-twin";
+import { AdvancedFitnessDigitalTwin, MuscleRegion } from "@/components/fitness-twin";
 import {
   Activity,
   Dumbbell,
@@ -163,88 +163,13 @@ export default function PhysicalWellbeingPage() {
       {/* FEATURE 4: FITNESS DIGITAL TWIN (SIGNATURE 3D FEATURE) */}
       {activeTab === "twin" && (
         <section className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* 3D Model Viewport */}
-            <div className="lg:col-span-7 rounded-3xl bg-[#FAF8F4] border border-[#183C32]/12 p-6 shadow-soft relative overflow-hidden flex flex-col justify-between">
-              <div className="flex items-center justify-between text-xs font-mono text-[#3E4542] pb-2 border-b border-[#183C32]/10">
-                <span className="flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#46C5B0]" />
-                  <span>3D FITNESS DIGITAL TWIN</span>
-                </span>
-                <span className="text-[11px] text-[#183C32] font-semibold">
-                  Drag to rotate &middot; Click to inspect
-                </span>
-              </div>
-
-              {/* Three.js Canvas */}
-              <FitnessDigitalTwin
-                selectedRegion={selectedMuscle}
-                onSelectRegion={(reg) => setSelectedMuscle(reg)}
-              />
-
-              <div className="p-3 rounded-xl bg-white/90 backdrop-blur-sm border border-[#183C32]/10 text-xs flex items-center justify-between">
-                <span>Active Selection:</span>
-                <span className="font-semibold text-[#183C32] capitalize">{selectedMuscle}</span>
-              </div>
-            </div>
-
-            {/* Muscle Breakdown & Telemetry Overlays */}
-            <div className="lg:col-span-5 space-y-6">
-              {/* Muscle Selector Pills */}
-              <div className="space-y-2">
-                <label className="text-xs font-semibold uppercase text-[#3E4542]">Select Muscle Group</label>
-                <div className="grid grid-cols-3 gap-2">
-                  {(["chest", "back", "shoulders", "arms", "core", "legs"] as MuscleRegion[]).map((m) => (
-                    <button
-                      key={m}
-                      onClick={() => setSelectedMuscle(m)}
-                      className={`py-2 px-3 rounded-xl border text-xs capitalize font-medium transition-all ${
-                        selectedMuscle === m
-                          ? "bg-[#183C32] text-[#F5F1E8] border-[#183C32] shadow-subtle"
-                          : "bg-white text-[#222624] border-[#183C32]/15 hover:border-[#183C32]/30"
-                      }`}
-                    >
-                      {m}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Selected Muscle Telemetry Card */}
-              <div className="p-6 rounded-2xl bg-[#EEF3ED] border border-[#183C32]/15 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-[#183C32] font-semibold">
-                    Muscle Group Telemetry
-                  </span>
-                  <Badge variant="success" size="sm">{currentMuscleInfo.recoveryStatus}</Badge>
-                </div>
-
-                <div className="space-y-1">
-                  <h3 className="text-xl font-medium text-[#183C32]">{currentMuscleInfo.title}</h3>
-                  <p className="text-xs text-[#183C32]/85">Primary Exercises: {currentMuscleInfo.exercise}</p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  <div className="p-3 rounded-xl bg-white border border-[#183C32]/10">
-                    <div className="text-[10px] font-mono text-[#3E4542]">SETS THIS WEEK</div>
-                    <div className="text-xl font-light text-[#183C32]">{currentMuscleInfo.setsLogged} sets</div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-white border border-[#183C32]/10">
-                    <div className="text-[10px] font-mono text-[#3E4542]">PROTEIN SUPPORT</div>
-                    <div className="text-xl font-light text-[#183C32]">{Math.round(totalProtein)}g / 130g</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Scientific Truthfulness Disclaimer */}
-              <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#183C32]/10 text-xs text-[#3E4542] leading-relaxed flex items-start gap-2">
-                <Info className="w-4 h-4 text-[#183C32] shrink-0 mt-0.5" />
-                <span>
-                  <strong>No Anatomical Faking:</strong> Workouts and nutrition do not immediately alter physical tissue. Recorded sensor metrics are strictly decoupled from long-term body composition estimates.
-                </span>
-              </div>
-            </div>
-          </div>
+          <AdvancedFitnessDigitalTwin
+            initialRegion={selectedMuscle}
+            initialLayer="activity"
+            onActionTrigger={(action) => {
+              alert(`${action} — added to your physical rhythm calendar.`);
+            }}
+          />
         </section>
       )}
 

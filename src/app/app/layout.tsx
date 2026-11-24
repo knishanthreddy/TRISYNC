@@ -18,10 +18,12 @@ import {
   ArrowRight,
   Menu,
   X,
+  Bot,
 } from "lucide-react";
 
 const NAV_ITEMS = [
   { href: "/app/overview", label: "Overview", icon: LayoutGrid },
+  { href: "/app/agent", label: "Wellness Agent", icon: Bot },
   { href: "/app/physical", label: "Physical Wellbeing", icon: Activity },
   { href: "/app/mental", label: "Mental Wellbeing", icon: Brain },
   { href: "/app/digital", label: "Digital Wellbeing", icon: Sparkles },
