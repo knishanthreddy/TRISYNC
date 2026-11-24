@@ -9,12 +9,12 @@ import {
   LayoutGrid,
   Activity,
   Brain,
+  Sparkles,
   Orbit,
   LineChart,
   Trophy,
   User,
   LogOut,
-  Sparkles,
   ArrowRight,
   Menu,
   X,
@@ -24,8 +24,9 @@ const NAV_ITEMS = [
   { href: "/app/overview", label: "Overview", icon: LayoutGrid },
   { href: "/app/physical", label: "Physical Wellbeing", icon: Activity },
   { href: "/app/mental", label: "Mental Wellbeing", icon: Brain },
+  { href: "/app/digital", label: "Digital Wellbeing", icon: Sparkles },
   { href: "/app/universe", label: "My Universe", icon: Orbit },
-  { href: "/app/insights", label: "Insights", icon: LineChart },
+  { href: "/app/insights", label: "Insights & Engine", icon: LineChart },
   { href: "/app/rewards", label: "Play & Rewards", icon: Trophy },
   { href: "/app/profile", label: "My Profile", icon: User },
 ];
@@ -79,7 +80,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-[#F5F1E8] flex flex-col md:flex-row text-[#222624]">
       {/* DESKTOP COMPACT SIDEBAR */}
       <aside className="hidden md:flex flex-col justify-between w-64 lg:w-72 bg-[#FAF8F4] border-r border-[#183C32]/10 p-6 shrink-0 h-screen sticky top-0">
-        <div className="space-y-7">
+        <div className="space-y-6">
           {/* Brand Header */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-8 h-8 rounded-lg bg-[#183C32] flex items-center justify-center shadow-subtle group-hover:bg-[#112C25] transition-colors">
@@ -97,7 +98,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </Link>
 
           {/* Live Sync Status Badge */}
-          <div className="p-3.5 rounded-2xl bg-[#EEF3ED] border border-[#183C32]/10 space-y-1.5">
+          <div className="p-3 rounded-2xl bg-[#EEF3ED] border border-[#183C32]/10 space-y-1.5">
             <div className="flex items-center justify-between text-xs">
               <span className="font-medium text-[#183C32]">Tri-Sync Resonance</span>
               <span className="font-mono font-semibold text-[#183C32]">{user?.syncScore || 86}%</span>
@@ -115,7 +116,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
 
           {/* Main Navigation Links */}
-          <nav className="space-y-1">
+          <nav className="space-y-0.5">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive = pathname.startsWith(item.href);
@@ -123,7 +124,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
+                  className={`flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium transition-all ${
                     isActive
                       ? "bg-[#183C32] text-[#F5F1E8] shadow-subtle"
                       : "text-[#3E4542] hover:bg-[#183C32]/5 hover:text-[#183C32]"
@@ -138,7 +139,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* User Card & Sign Out */}
-        <div className="pt-6 border-t border-[#183C32]/10 space-y-3">
+        <div className="pt-4 border-t border-[#183C32]/10 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-[#183C32]/10 border border-[#183C32]/15 flex items-center justify-center font-medium text-xs text-[#183C32]">
